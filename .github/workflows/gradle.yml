@@ -9,7 +9,7 @@ name: Spring Boot & Gradle CI/CD
 # branch 단위 외에도, tag나 cron 식 등을 사용할 수 있음
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -55,4 +55,4 @@ jobs:
           aws s3 cp \
           --region ap-northeast-2 \
           --acl private \ 
-	  ./springboot-intro-build.zip s3://springboot-intro-build/
+    ./springboot-intro-build.zip s3://springboot-intro-build/
