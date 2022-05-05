@@ -16,7 +16,7 @@ then
 else
   echo "> kill -9 $CURRENT_PID"
   kill -9 $CURRENT_PID
-  sleep 5
+  sleep 10
 fi
 
 DEPLOY_JAR=$DEPLOY_PATH$JAR_NAME
