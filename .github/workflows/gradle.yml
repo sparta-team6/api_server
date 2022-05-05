@@ -32,11 +32,11 @@ jobs:
 
       # Build
       - name: Build with Gradle
-        run: ./gradlew clean build
+        run: ./gradlew build
 
       # 전송할 파일을 담을 디렉토리 생성
       - name: Make Directory for deliver
-        run: mkdir deploy
+        run: mkdir -p deploy
 
       # Jar 파일 Copy
       - name: Copy Jar
@@ -52,3 +52,16 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: aws s3 cp --region ap-northeast-2 --acl private ./springboot-intro-build.zip s3://pg-parunson/
+
+      # Deploy
+      - name: Deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws deploy create-deployment \
+          --application-name springboot-intro \
+          --deployment-group-name springboot-intro-group \
+          --file-exists-behavior OVERWRITE \
+          --s3-location bucket=pg-parunson,bundleType=zip,key=springboot-intro-build.zip \
+          --region ap-northeast-2
