@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
@@ -32,8 +33,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // 정리
-
         http.cors().and()
                 .csrf().disable();
 
@@ -47,6 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .csrf().ignoringAntMatchers("/api/**")
 //                .and()
                 .authorizeRequests() // ↓ 인증 인가 관련 ↓
+                    .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                     // image 폴더를 login 없이 허용
                     .antMatchers("/images/**").permitAll()
                     // css 폴더를 login 없이 허용
