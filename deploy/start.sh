@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "data now : $(date +%Y)-$(date +%m)-$(date +%d) $(date +%H):$(date +%M):$(date +%S)"
 BUILD_JAR=$(ls /home/ubuntu/app/deploy/*.jar)
 JAR_NAME=$(basename $BUILD_JAR)
 echo "> build 파일명: $JAR_NAME" >> /home/ubuntu/deploy.log
