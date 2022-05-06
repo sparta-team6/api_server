@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/api/register").permitAll()  // 회원가입 페이지 이동
                     .antMatchers("/").permitAll()  // 메인 페이지 이동
                     .antMatchers("/api/login").permitAll() // 로그인
-                    .antMatchers("/user/kakao/callback").permitAll() // 로그인
+                    .antMatchers("/user/kakao/callback/**").permitAll() // 로그인
                     .antMatchers("/api/logout").permitAll() // 로그아웃
                 // 그 외 어떤 요청이든 '인증 필요'
                 .anyRequest().authenticated()
