@@ -14,7 +14,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) User loginMember, Model model) {
-        // 세션에 회원 데이터가 없으면 home
+        // 세션에 회원 데이터가 없으면 home!
         if (loginMember == null) {
             return "index";
         }
