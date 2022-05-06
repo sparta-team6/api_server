@@ -21,6 +21,6 @@ jobs:
       - name: Test with Gradle
         run: ./gradlew --info test
  
-      - name: JUnit Report Action
-        uses: mikepenz/action-junit-report@v3.0.3
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1.33
 
