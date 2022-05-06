@@ -14,12 +14,21 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.projectlombok:lombok:1.18.24'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    runtimeOnly 'com.h2database:h2'
+    // 스프링 시큐리티
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    // 스프링 시큐리티 테스트
+    testImplementation 'org.springframework.security:spring-security-test'
+    // request 데이터 검증
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
 }
 
 tasks.named('test') {
-    useJUnitPlatform()
 }
 
 jar { enabled = false }
