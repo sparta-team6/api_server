@@ -26,8 +26,8 @@ COUNT=0
 
 while :
 do
-  echo "> 현재 실행중인 애플리케이션 pid 확인" >> /home/ubuntu/deploy.log
   CURRENT_PID=$(pgrep -f "$JAR_NAME")
+  echo "> 현재 실행중인 애플리케이션 pid 확인 : $CURRENT_PID" >> /home/ubuntu/deploy.log
   if [ -z "$CURRENT_PID" ]
   then
     break
