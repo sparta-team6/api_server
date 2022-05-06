@@ -21,9 +21,6 @@ jobs:
       - name: Test with Gradle
         run: ./gradlew --info test
  
-      # 테스트 후 Result를 보기위해 Publish Unit Test Results step 추가
-      - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1
-        if: always()
-        with:
-          files: "test-results/**/*.xml"
+      - name: JUnit Report Action
+        uses: mikepenz/action-junit-report@v3.0.3
+
