@@ -33,13 +33,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // 정리
+
+        http.cors().and()
+                .csrf().disable();
+
         http
-                .cors().configurationSource(corsConfigurationSource())
-                .and()
+//                .cors().configurationSource(corsConfigurationSource())
+//                .and()
                 .httpBasic().disable() // 기본 로그인 페이지 사용 안함
                 // REST API 사용하기 때문에 사용 안함
-                .csrf().ignoringAntMatchers("/api/**")
-                .and()
+//                .csrf().ignoringAntMatchers("/api/**")
+//                .and()
                 .authorizeRequests() // ↓ 인증 인가 관련 ↓
                     // image 폴더를 login 없이 허용
                     .antMatchers("/images/**").permitAll()
