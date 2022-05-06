@@ -21,23 +21,25 @@ CURRENT_PID=$(pgrep -f $JAR_NAME)
 #fi
 COUNT=0
 echo "> 현재 실행중인 애플리케이션 pid 확인" >> /home/ubuntu/deploy.log
+
 while :
 do
+  echo "> 현재 실행중인 애플리케이션 pid 확인" >> /home/ubuntu/deploy.log
   CURRENT_PID=$(pgrep -f $JAR_NAME)
   if [ -z $CURRENT_PID ]
   then
-    echo "> 현재 구동중인 애플리케이션이 없으므로 종료하지 않습니다." >> /home/ubuntu/deploy.log
     break
   fi
 
   if [ $COUNT -eq 0 ]
   then
     COUNT=10
-    echo "> kill -15 $CURRENT_PID"
-    kill -15 $CURRENT_PID
+    echo "> kill -9 $CURRENT_PID"
+    kill -9 $CURRENT_PID
     echo "> 현재 구동중인 애플리케이션을 종료합니다." >> /home/ubuntu/deploy.log
   fi
   sleep 5
+
 done
 
 DEPLOY_JAR=$DEPLOY_PATH$JAR_NAME
