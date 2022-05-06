@@ -1,5 +1,6 @@
 package com.example.model;
 
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

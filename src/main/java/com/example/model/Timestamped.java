@@ -1,5 +1,6 @@
 package com.example.model;
 
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
