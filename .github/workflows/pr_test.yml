@@ -1,5 +1,9 @@
 name: PR Test
- 
+
+permissions:
+  checks: write
+  pull-requests: write
+
 on:
   pull_request:
     branches: [ main ]
