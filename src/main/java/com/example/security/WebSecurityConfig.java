@@ -41,6 +41,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .cors().configurationSource(corsConfigurationSource())
 //                .and()
                 .httpBasic().disable() // 기본 로그인 페이지 사용 안함
+                // [로그인 기능]
+                .formLogin().disable()
                 // REST API 사용하기 때문에 사용 안함
 //                .csrf().ignoringAntMatchers("/api/**")
 //                .and()
@@ -56,10 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/user/kakao/callback/**").permitAll() // 로그인
                     .antMatchers("/api/logout").permitAll() // 로그아웃
                 // 그 외 어떤 요청이든 '인증 필요'
-                .anyRequest().authenticated()
-                .and()
-                    // [로그인 기능]
-                    .formLogin().disable();
+                .anyRequest().authenticated();
     }
 
     // CORS 정책 필터
